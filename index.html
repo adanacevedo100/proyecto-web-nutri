@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriSteps - Tu Viaje Hacia una Vida Saludable</title>
+    <!-- Framework de Estilos (Tailwind) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fuentes de Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <!-- Enlace a tu hoja de estilos personalizada -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header -->
+    <header id="main-header" class="bg-white/80 dark:bg-dark-surface/80 backdrop-blur-md fixed top-0 left-0 right-0 z-50 transition-all duration-300 shadow-md">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#inicio" class="text-2xl font-bold text-green-500">NutriSteps</a>
+            <nav class="hidden md:flex items-center space-x-6">
+                <a href="#inicio" class="nav-link hover:text-orange-500 transition-colors">Inicio</a>
+                <a href="#recetas" class="nav-link hover:text-orange-500 transition-colors">Recetas</a>
+                <a href="#testimonios" class="nav-link hover:text-orange-500 transition-colors">Testimonios</a>
+                <a href="#blog" class="nav-link hover:text-orange-500 transition-colors">Blog</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <button id="dark-mode-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                    <svg id="sun-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    <svg id="moon-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </button>
+                <a href="#registro" class="bg-orange-500 text-white font-bold py-2 px-5 rounded-full hover:bg-orange-600 transition-all transform hover:scale-105">Registro</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 1. Scroll Storytelling Section -->
+        <section id="inicio">
+            <!-- Step 0: El Inicio -->
+            <div class="story-step parallax-bg" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=2070&auto=format&fit=crop');">
+                <div class="bg-black/60 absolute inset-0"></div>
+                <div class="text-center text-white z-10 p-6 fade-in">
+                    <h1 class="text-5xl md:text-7xl font-black leading-tight">El primer paso no es en el gimnasio.</h1>
+                    <p class="text-xl md:text-2xl mt-4 max-w-3xl">[Es en tu cocina. Descubre la historia de cómo un cambio en la nutrición puede transformar tu vida.]</p>
+                    <a href="#story-1" class="mt-8 inline-block bg-green-500 text-white font-bold py-3 px-8 rounded-full text-lg uppercase tracking-wider hover:bg-green-600 transition-all transform hover:scale-105">Comienza tu viaje &darr;</a>
+                </div>
+            </div>
+
+            <!-- Step 1: Evaluación -->
+            <div id="story-1" class="story-step bg-white dark:bg-dark-bg">
+                <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+                    <div class="fade-in">
+                        <img src="https://images.unsplash.com/photo-1517441334293-8f0a74937234?q=80&w=1974&auto=format&fit=crop" class="rounded-2xl shadow-2xl" alt="[Chica evaluando sus hábitos alimenticios en una libreta]">
+                    </div>
+                    <div class="text-left fade-in">
+                        <span class="text-orange-500 font-bold">PASO 1</span>
+                        <h2 class="text-4xl md:text-5xl font-bold mt-2 text-primary">Evaluación de Hábitos</h2>
+                        <p class="text-lg mt-4 text-secondary">Todo gran cambio empieza con la honestidad. Analizamos tus hábitos actuales sin juicios, solo para entender el punto de partida. ¿Qué comes? ¿Cuándo? ¿Por qué? Esta es la base de tu transformación.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Recetas NutriSteps -->
+            <div class="story-step bg-gray-100 dark:bg-dark-surface">
+                <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+                    <div class="text-left fade-in md:order-2">
+                         <span class="text-orange-500 font-bold">PASO 2</span>
+                        <h2 class="text-4xl md:text-5xl font-bold mt-2 text-primary">Recetas que Enamoran</h2>
+                        <p class="text-lg mt-4 text-secondary">Comer saludable no es comer aburrido. Te damos recetas deliciosas, fáciles y rápidas, diseñadas por nutricionistas para cada objetivo: perder grasa, tonificar o ganar músculo. Disfruta el proceso.</p>
+                        <a href="#recetas" class="mt-6 inline-block text-green-500 font-semibold hover:underline">Explorar recetas &rarr;</a>
+                    </div>
+                    <div class="fade-in md:order-1">
+                        <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?q=80&w=2070&auto=format&fit=crop" class="rounded-2xl shadow-2xl" alt="[Mesa llena de ingredientes frescos y coloridos para cocinar]">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Step 3: Plan Personalizado -->
+             <div class="story-step bg-white dark:bg-dark-bg">
+                <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+                    <div class="fade-in">
+                        <img src="https://images.unsplash.com/photo-1512428209249-6a8f0a0aa463?q=80&w=1974&auto=format&fit=crop" class="rounded-2xl shadow-2xl" alt="[Primer plano de un smartphone con una app de planificación de comidas]">
+                    </div>
+                    <div class="text-left fade-in">
+                        <span class="text-orange-500 font-bold">PASO 3</span>
+                        <h2 class="text-4xl md:text-5xl font-bold mt-2 text-primary">Tu Propio Mapa Nutricional</h2>
+                        <p class="text-lg mt-4 text-secondary">No hay dos caminos iguales. Basado en tus objetivos y preferencias, creamos un plan de nutrición flexible y realista. Olvídate de las dietas estrictas, hola a un estilo de vida que puedes mantener.</p>
+                    </div>
+                </div>
+            </div>
+            
+             <!-- Step 4: Comunidad y Éxito -->
+            <div class="story-step parallax-bg" style="background-image: url('https://images.unsplash.com/photo-1571902943202-507ec2618e8f?q=80&w=1975&auto=format&fit=crop');">
+                <div class="bg-black/60 absolute inset-0"></div>
+                <div class="text-center text-white z-10 p-6 fade-in">
+                    <span class="text-orange-500 font-bold">EL RESULTADO</span>
+                    <h2 class="text-5xl md:text-7xl font-black leading-tight mt-2">Confianza. Fuerza. Salud.</h2>
+                    <p class="text-xl md:text-2xl mt-4 max-w-3xl">Esto es más que un físico trabajado. Es la energía para vivir al máximo, la confianza para superar cualquier reto y la salud para disfrutar cada momento. Este es tu éxito.</p>
+                    <a href="#testimonios" class="mt-8 inline-block bg-orange-500 text-white font-bold py-3 px-8 rounded-full text-lg uppercase tracking-wider hover:bg-orange-600 transition-all transform hover:scale-105">Ver historias reales</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Recipes Section -->
+        <section id="recetas" class="py-20 md:py-32 bg-gray-100 dark:bg-dark-surface">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 fade-in">
+                    <h2 class="text-4xl md:text-5xl font-bold text-primary">Encuentra tu Próxima Comida Favorita</h2>
+                    <p class="text-lg mt-4 text-secondary max-w-2xl mx-auto">Filtra nuestras recetas por tu objetivo, ingredientes o tiempo. Comer bien nunca fue tan fácil.</p>
+                </div>
+                
+                <!-- Filters -->
+                <div class="flex flex-wrap justify-center gap-4 mb-12 fade-in">
+                    <select id="filter-objetivo" class="filter-control bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-full py-2 px-4">
+                        <option value="all">Todos los objetivos</option>
+                        <option value="perder-grasa">Perder Grasa</option>
+                        <option value="tonificar">Tonificar</option>
+                        <option value="aumentar-masa">Aumentar Masa</option>
+                    </select>
+                    <select id="filter-tiempo" class="filter-control bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-full py-2 px-4">
+                        <option value="all">Cualquier tiempo</option>
+                        <option value="15">Menos de 15 min</option>
+                        <option value="30">Menos de 30 min</option>
+                    </select>
+                     <input id="filter-ingrediente" type="text" placeholder="Buscar por ingrediente..." class="filter-control bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-full py-2 px-4 w-full sm:w-auto">
+                </div>
+
+                <!-- Recipe Gallery -->
+                <div id="recipe-gallery" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                    <!-- Recipe cards will be injected here by JavaScript -->
+                </div>
+            </div>
+        </section>
+        
+        <!-- 3. Quiz Section -->
+        <section id="quiz" class="py-20 md:py-32 bg-white dark:bg-dark-bg">
+            <div class="container mx-auto px-6 text-center fade-in">
+                 <h2 class="text-4xl md:text-5xl font-bold text-primary">¿No sabes por dónde empezar?</h2>
+                 <p class="text-lg mt-4 text-secondary max-w-2xl mx-auto">Responde 3 preguntas rápidas y te recomendaremos la receta perfecta para ti hoy.</p>
+                 <div id="quiz-container" class="mt-12 max-w-2xl mx-auto surface p-8 rounded-2xl shadow-xl">
+                    <div id="quiz-question-1">
+                        <h3 class="text-xl font-semibold mb-4">¿Cuál es tu principal objetivo ahora mismo?</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <button class="quiz-answer p-4 border rounded-lg" data-answer="perder-grasa">Perder grasa</button>
+                            <button class="quiz-answer p-4 border rounded-lg" data-answer="tonificar">Mantenerme y tonificar</button>
+                            <button class="quiz-answer p-4 border rounded-lg" data-answer="aumentar-masa">Ganar energía y músculo</button>
+                        </div>
+                    </div>
+                     <div id="quiz-result" class="hidden">
+                         <h3 class="text-2xl font-bold mb-4">¡Tenemos la receta ideal para ti!</h3>
+                         <div id="quiz-result-card" class="text-left"></div>
+                         <button id="quiz-reset" class="mt-6 text-green-500 font-semibold hover:underline">Hacer el test de nuevo</button>
+                    </div>
+                 </div>
+            </div>
+        </section>
+
+        <!-- 4. Testimonials Section -->
+        <section id="testimonios" class="py-20 md:py-32 bg-gray-100 dark:bg-dark-surface">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 fade-in">
+                    <h2 class="text-4xl md:text-5xl font-bold text-primary">Historias de Éxito Reales</h2>
+                    <p class="text-lg mt-4 text-secondary max-w-2xl mx-auto">Nuestra comunidad es nuestra mayor inspiración. Mira lo que han logrado.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Testimonial 1 -->
+                    <div class="text-center fade-in">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1976&auto=format&fit=crop" class="w-48 h-48 rounded-full mx-auto shadow-lg object-cover" alt="[Foto de antes y después de una usuaria]">
+                        <p class="italic text-secondary mt-6">"Nunca pensé que podría disfrutar tanto de la comida saludable. Perdí 10 kg y gané una confianza que no tenía. ¡NutriSteps cambió mi vida!"</p>
+                        <h4 class="font-bold text-primary mt-4">- Laura G.</h4>
+                    </div>
+                    <!-- Testimonial 2 -->
+                    <div class="text-center fade-in" style="transition-delay: 200ms;">
+                        <img src="https://images.unsplash.com/photo-1554151228-14d9def656e4?q=80&w=1972&auto=format&fit=crop" class="w-48 h-48 rounded-full mx-auto shadow-lg object-cover" alt="[Foto de antes y después de una usuaria]">
+                        <p class="italic text-secondary mt-6">"Como desarrollador, pasaba el día sentado y sin energía. Las recetas rápidas de NutriSteps me ayudaron a comer mejor sin sacrificar tiempo. Ahora rindo más en el trabajo y en el gimnasio."</p>
+                        <h4 class="font-bold text-primary mt-4">- Carlos V.</h4>
+                    </div>
+                    <!-- Testimonial 3 -->
+                    <div class="text-center fade-in" style="transition-delay: 400ms;">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961&auto=format&fit=crop" class="w-48 h-48 rounded-full mx-auto shadow-lg object-cover" alt="[Foto de antes y después de una usuaria]">
+                        <p class="italic text-secondary mt-6">"Después de mi embarazo, quería recuperar mi figura de forma sana. Encontré el plan perfecto y el apoyo de la comunidad fue increíble. ¡Ya estoy en mi mejor forma!"</p>
+                        <h4 class="font-bold text-primary mt-4">- Sofía R.</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Blog Section -->
+        <section id="blog" class="py-20 md:py-32 bg-white dark:bg-dark-bg">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 fade-in">
+                    <h2 class="text-4xl md:text-5xl font-bold text-primary">Tips de Nuestro Blog</h2>
+                    <p class="text-lg mt-4 text-secondary max-w-2xl mx-auto">Conocimiento basado en ciencia, explicado de forma sencilla para potenciar tus resultados.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                     <!-- Blog Post 1 -->
+                    <div class="surface rounded-2xl shadow-lg overflow-hidden recipe-card fade-in">
+                        <img src="https://images.unsplash.com/photo-1543362906-acfc16c67564?q=80&w=1965&auto=format&fit=crop" class="w-full h-56 object-cover" alt="[Suplementos y vitaminas]">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-primary">El Mito de los Suplementos: ¿Realmente los necesitas?</h3>
+                            <p class="text-secondary mt-2">Analizamos la evidencia científica detrás de los suplementos más populares.</p>
+                            <a href="#" class="inline-block mt-4 font-semibold text-green-500 hover:underline">Leer más &rarr;</a>
+                        </div>
+                    </div>
+                    <!-- Blog Post 2 -->
+                    <div class="surface rounded-2xl shadow-lg overflow-hidden recipe-card fade-in" style="transition-delay: 200ms;">
+                        <img src="https://images.unsplash.com/photo-1505575965341-43dc543c133a?q=80&w=1974&auto=format&fit=crop" class="w-full h-56 object-cover" alt="[Persona durmiendo plácidamente]">
+                        <h3 class="text-xl font-bold text-primary p-6">Cómo el sueño afecta tu apetito (y tu peso)</h3>
+                        <p class="text-secondary mt-2 p-6 pt-0">La conexión oculta entre un buen descanso y el control de los antojos.</p>
+                        <a href="#" class="inline-block mt-4 font-semibold text-green-500 hover:underline p-6 pt-0">Leer más &rarr;</a>
+                    </div>
+                    <!-- Blog Post 3 -->
+                    <div class="surface rounded-2xl shadow-lg overflow-hidden recipe-card fade-in" style="transition-delay: 400ms;">
+                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1932&auto=format&fit=crop" class="w-full h-56 object-cover" alt="[Comida preparada en recipientes para la semana]">
+                        <h3 class="text-xl font-bold text-primary p-6">Meal Prep para Principiantes: Ahorra tiempo y dinero</h3>
+                        <p class="text-secondary mt-2 p-6 pt-0">Una guía paso a paso para organizar tus comidas de la semana en menos de 2 horas.</p>
+                        <a href="#" class="inline-block mt-4 font-semibold text-green-500 hover:underline p-6 pt-0">Leer más &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Registration/CTA Section -->
+        <section id="registro" class="bg-orange-500">
+            <div class="container mx-auto px-6 py-20 text-center text-white fade-in">
+                 <h2 class="text-4xl md:text-5xl font-black">Lleva tu Nutrición al Siguiente Nivel</h2>
+                 <p class="text-xl mt-4 max-w-2xl mx-auto">Regístrate para acceder a contenido premium, seguimiento de tu progreso y planes de nutrición 100% personalizados por nuestros expertos.</p>
+                 <div class="mt-8">
+                     <a href="#" class="bg-white text-orange-500 font-bold py-4 px-10 rounded-full text-lg hover:bg-gray-100 transition-all transform hover:scale-105">ÚNETE AHORA</a>
+                 </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <!-- Modal Container -->
+    <div id="recipe-modal-container"></div>
+
+    <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto px-6 py-12 text-center">
+            <p class="text-2xl font-bold text-green-500">NutriSteps</p>
+            <div class="flex justify-center space-x-6 mt-4">
+                <a href="#" class="hover:text-orange-500">Facebook</a>
+                <a href="#" class="hover:text-orange-500">Instagram</a>
+                <a href="#" class="hover:text-orange-500">Twitter</a>
+            </div>
+            <p class="text-gray-400 mt-8 text-sm">&copy; 2024 NutriSteps. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Enlace a tu archivo JavaScript -->
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+/*
+  Este archivo contiene los estilos personalizados para NutriSteps.
+  Complementa a Tailwind CSS para efectos específicos.
+*/
+
+:root {
+    --green: #4CAF50; /* Verde vivo */
+    --orange: #FF9800; /* Naranja energético */
+    --dark-bg: #1a1a1a;
+    --dark-surface: #2c2c2c;
+    --dark-text: #f5f5f5;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* --- ESTILOS PARA MODO OSCURO --- */
+.dark body {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+}
+.dark .surface {
+    background-color: var(--dark-surface);
+    border-color: #444;
+}
+.dark .text-primary { color: var(--dark-text); }
+.dark .text-secondary { color: #aaa; }
+.dark .modal-content {
+    background-color: var(--dark-surface);
+}
+
+
+/* --- EFECTOS VISUALES Y ANIMACIONES --- */
+.parallax-bg {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.story-step {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.recipe-card {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.recipe-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2), 0 10px 10px -5px rgba(0,0,0,0.1);
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* --- ESTILOS DE NAVEGACIÓN --- */
+.active-nav {
+    color: var(--orange) !important;
+    font-weight: 700;
+}
+
+
+/* --- ESTILOS PARA EL MODAL DE RECETAS --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+.modal-overlay.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+.modal-content {
+    position: relative; /* Needed for the close button positioning */
+    background-color: white;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    border-radius: 1rem;
+    overflow-y: auto;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+.modal-overlay.visible .modal-content {
+    transform: scale(1);
+}
+
