@@ -233,6 +233,48 @@
             </div>
         </section>
 
+    
+        <!-- 7. Dashboard PPC Section -->
+        <section id="dashboard" class="py-20 md:py-32 bg-gray-100 dark:bg-dark-surface">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-10 fade-in">
+                    <h2 class="text-4xl md:text-5xl font-bold text-primary">App de Datos PPC en Vivo</h2>
+                    <p class="text-lg mt-4 text-secondary max-w-3xl mx-auto">Conecta tu Google Sheet y revisa gasto, conversiones y CPA por campaña/dispositivo al instante.</p>
+                </div>
+
+                <div class="surface rounded-2xl shadow-xl p-6 md:p-8 fade-in">
+                    <div class="grid md:grid-cols-4 gap-4">
+                        <input id="sheet-url" type="url" class="filter-control md:col-span-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-xl py-3 px-4" value="https://docs.google.com/spreadsheets/d/1R9RntVrh_aNMMINxj-M8eZomngX79ZQS1jtUMeozXus/export?format=csv&gid=0"/>
+                        <button id="load-sheet-data" class="bg-green-500 text-white font-bold py-3 px-5 rounded-xl hover:bg-green-600 transition-all">Cargar datos</button>
+                    </div>
+                    <p id="sheet-status" class="text-secondary mt-4">Pega tu URL CSV pública y pulsa "Cargar datos".</p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
+                        <div class="surface border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                            <p class="text-secondary">Gasto total</p><p id="metric-spend" class="text-2xl font-bold text-primary">-</p>
+                        </div>
+                        <div class="surface border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                            <p class="text-secondary">Conversiones</p><p id="metric-conv" class="text-2xl font-bold text-primary">-</p>
+                        </div>
+                        <div class="surface border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                            <p class="text-secondary">CPA promedio</p><p id="metric-cpa" class="text-2xl font-bold text-primary">-</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-10">
+                        <div>
+                            <h3 class="text-xl font-bold text-primary mb-4">Gasto vs Conversiones por línea</h3>
+                            <canvas id="campaign-chart" height="300"></canvas>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-primary mb-4">Conversiones por dispositivo</h3>
+                            <canvas id="device-chart" height="300"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
     
     <!-- Modal Container -->
@@ -251,6 +293,8 @@
     </footer>
 
     <!-- Enlace a tu archivo JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>

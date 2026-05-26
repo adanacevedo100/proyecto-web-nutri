@@ -330,4 +330,135 @@ document.addEventListener('DOMContentLoaded', () => {
     sections.forEach(section => {
          if(section && section.id) navObserver.observe(section);
     });
+
+    // --- PPC DASHBOARD (Google Sheets CSV) ---
+    const sheetUrlInput = document.getElementById('sheet-url');
+    const loadSheetBtn = document.getElementById('load-sheet-data');
+    const statusEl = document.getElementById('sheet-status');
+    const spendEl = document.getElementById('metric-spend');
+    const convEl = document.getElementById('metric-conv');
+    const cpaEl = document.getElementById('metric-cpa');
+
+    let campaignChart;
+    let deviceChart;
+
+    const normalizeNumber = (value) => {
+        if (value === null || value === undefined) return 0;
+        const raw = String(value).trim();
+        if (!raw) return 0;
+        const sanitized = raw.replace(/[^0-9,.-]/g, '');
+        const hasComma = sanitized.includes(',');
+        const hasDot = sanitized.includes('.');
+        let normalized = sanitized;
+        if (hasComma && hasDot) {
+            normalized = sanitized.replace(/\./g, '').replace(',', '.');
+        } else if (hasComma) {
+            normalized = sanitized.replace(',', '.');
+        }
+        return Number(normalized) || 0;
+    };
+
+    const pickColumn = (row, keys) => {
+        const lower = Object.keys(row).reduce((acc, k) => ({ ...acc, [k.toLowerCase().trim()]: row[k] }), {});
+        const match = keys.find(key => lower[key] !== undefined);
+        return match ? lower[match] : undefined;
+    };
+
+    const detectLine = (campaign = '') => {
+        const text = String(campaign).toLowerCase();
+        if (text.includes('adam') || text.includes('corporativo')) return 'CORPORATIVO';
+        if (text.includes('espejo') || text.includes('particular')) return 'PARTICULAR';
+        return 'OTROS';
+    };
+
+    const updateStatus = (message, error = false) => {
+        if (!statusEl) return;
+        statusEl.textContent = message;
+        statusEl.classList.toggle('text-red-500', error);
+        statusEl.classList.toggle('text-secondary', !error);
+    };
+
+    const drawCharts = (byLine, byDevice) => {
+        const lineLabels = Object.keys(byLine);
+        const spendData = lineLabels.map(label => byLine[label].spend);
+        const convData = lineLabels.map(label => byLine[label].conv);
+
+        if (campaignChart) campaignChart.destroy();
+        campaignChart = new Chart(document.getElementById('campaign-chart'), {
+            type: 'bar',
+            data: {
+                labels: lineLabels,
+                datasets: [
+                    { label: 'Gasto', data: spendData, backgroundColor: '#fb923c' },
+                    { label: 'Conversiones', data: convData, backgroundColor: '#22c55e' }
+                ]
+            },
+            options: { responsive: true, plugins: { legend: { position: 'top' } } }
+        });
+
+        const deviceLabels = Object.keys(byDevice);
+        const deviceData = deviceLabels.map(k => byDevice[k]);
+        if (deviceChart) deviceChart.destroy();
+        deviceChart = new Chart(document.getElementById('device-chart'), {
+            type: 'pie',
+            data: {
+                labels: deviceLabels,
+                datasets: [{ data: deviceData, backgroundColor: ['#22c55e', '#3b82f6', '#a855f7', '#f59e0b'] }]
+            },
+            options: { responsive: true }
+        });
+    };
+
+    const loadPpcData = async () => {
+        const csvUrl = sheetUrlInput?.value?.trim();
+        if (!csvUrl) return updateStatus('Necesito una URL CSV válida.', true);
+        try {
+            updateStatus('Cargando y analizando datos...');
+            const response = await fetch(csvUrl);
+            if (!response.ok) throw new Error('No se pudo leer el CSV. Revisa permisos de Google Sheets.');
+            const rawCsv = await response.text();
+            const parsed = Papa.parse(rawCsv, { header: true, skipEmptyLines: true });
+            const rows = parsed.data;
+            if (!rows.length) throw new Error('No hay filas para analizar.');
+
+            const byLine = {};
+            const byDevice = {};
+            let totalSpend = 0;
+            let totalConv = 0;
+
+            rows.forEach(row => {
+                const campaign = pickColumn(row, ['campaña', 'campaign', 'campaign name']) || '';
+                const device = pickColumn(row, ['dispositivo', 'device']) || 'Sin dispositivo';
+                const spend = normalizeNumber(pickColumn(row, ['coste', 'costo', 'cost', 'gasto', 'spend']));
+                const conv = normalizeNumber(pickColumn(row, ['conversiones', 'conversions']));
+
+                const line = detectLine(campaign);
+                if (!byLine[line]) byLine[line] = { spend: 0, conv: 0 };
+                byLine[line].spend += spend;
+                byLine[line].conv += conv;
+
+                byDevice[device] = (byDevice[device] || 0) + conv;
+                totalSpend += spend;
+                totalConv += conv;
+            });
+
+            spendEl.textContent = `€${totalSpend.toFixed(2)}`;
+            convEl.textContent = totalConv.toFixed(0);
+            cpaEl.textContent = totalConv > 0 ? `€${(totalSpend / totalConv).toFixed(2)}` : 'N/A';
+
+            drawCharts(byLine, byDevice);
+            updateStatus(`Datos cargados: ${rows.length} filas analizadas.`);
+        } catch (error) {
+            updateStatus(error.message || 'Error cargando datos.', true);
+        }
+    };
+
+    if (loadSheetBtn) loadSheetBtn.addEventListener('click', loadPpcData);
+
+    if (sheetUrlInput) {
+        sheetUrlInput.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') loadPpcData();
+        });
+    }
+
 });
